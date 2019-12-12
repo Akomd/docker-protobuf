@@ -68,12 +68,9 @@ RUN go get -u -v -ldflags '-w -s' github.com/Masterminds/glide \
         && go get -u -v -ldflags '-w -s' github.com/ckaznocha/protoc-gen-lint \
         && go get -u -v -ldflags '-w -s' github.com/mwitkow/go-proto-validators/protoc-gen-govalidators \
         && go get -d github.com/envoyproxy/protoc-gen-validate \
-        && cd ${GOPATH}/src/github.com/envoyproxy/protoc-gen-validate \
-        && make build \
-        && go get -u -v -ldflags '-w -s' github.com/lyft/protoc-gen-validate \
         && go get -u -v -ldflags '-w -s' moul.io/protoc-gen-gotemplate \
         && go get -u -v -ldflags '-w -s' github.com/micro/protoc-gen-micro \
-        && cd ${GOPATH}/src/github.com/lyft/protoc-gen-validate \
+        && cd ${GOPATH}/src/github.com/envoyproxy/protoc-gen-validate \
         && make build \
         && install -c ${GOPATH}/bin/protoc-gen* ${OUTDIR}/usr/bin/
 
