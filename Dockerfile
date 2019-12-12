@@ -67,7 +67,7 @@ RUN go get -u -v -ldflags '-w -s' github.com/Masterminds/glide \
         && go get -u -v -ldflags '-w -s' github.com/johanbrandhorst/protobuf/protoc-gen-gopherjs \
         && go get -u -v -ldflags '-w -s' github.com/ckaznocha/protoc-gen-lint \
         && go get -u -v -ldflags '-w -s' github.com/mwitkow/go-proto-validators/protoc-gen-govalidators \
-        && go get -d github.com/envoyproxy/protoc-gen-validate \
+        && go get -u -v -ldflags '-w -s' github.com/envoyproxy/protoc-gen-validate \
         && go get -u -v -ldflags '-w -s' moul.io/protoc-gen-gotemplate \
         && go get -u -v -ldflags '-w -s' github.com/micro/protoc-gen-micro \
         && cd ${GOPATH}/src/github.com/envoyproxy/protoc-gen-validate \
