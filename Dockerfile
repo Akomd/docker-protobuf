@@ -50,7 +50,8 @@ RUN find ${OUTDIR} -name "*.a" -delete -or -name "*.la" -delete
 
 RUN apk add --no-cache go
 ENV GOPATH=/go \
-        PATH=/go/bin/:$PATH
+        PATH=/go/bin/:$PATH \
+        GO111MODULE=on
 RUN go get -u -v -ldflags '-w -s' github.com/Masterminds/glide \
         && go get -u -v -ldflags '-w -s' github.com/golang/protobuf/protoc-gen-go \
         && go get -u -v -ldflags '-w -s' github.com/gogo/protobuf/protoc-gen-gofast \
@@ -59,7 +60,8 @@ RUN go get -u -v -ldflags '-w -s' github.com/Masterminds/glide \
         && go get -u -v -ldflags '-w -s' github.com/gogo/protobuf/protoc-gen-gogofaster \
         && go get -u -v -ldflags '-w -s' github.com/gogo/protobuf/protoc-gen-gogoslick \
         && go get -u -v -ldflags '-w -s' github.com/twitchtv/twirp/protoc-gen-twirp \
-        && go get -u -v -ldflags '-w -s' github.com/chrusty/protoc-gen-jsonschema \
+        && go get -u -v -ldflags '-w -s' github.com/chrusty/protoc-gen-jsonschema/cmd/protoc-gen-jsonschema \
+        && go install github.com/chrusty/protoc-gen-jsonschema/cmd/protoc-gen-jsonschema \
         && go get -u -v -ldflags '-w -s' github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
         && go get -u -v -ldflags '-w -s' github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
         && go get -u -v -ldflags '-w -s' github.com/johanbrandhorst/protobuf/protoc-gen-gopherjs \
