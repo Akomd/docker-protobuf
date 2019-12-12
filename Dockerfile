@@ -68,8 +68,8 @@ RUN go get -u -v -ldflags '-w -s' \
         github.com/mwitkow/go-proto-validators/protoc-gen-govalidators \
         github.com/lyft/protoc-gen-validate \
         moul.io/protoc-gen-gotemplate \
-        github.com/micro/protoc-gen-micro \
-        && cd ${GOPATH}/src/github.com/lyft/protoc-gen-validate \
+        github.com/micro/protoc-gen-micro
+RUN cd ${GOPATH}/src/github.com/lyft/protoc-gen-validate \
         && make build \
         && install -c ${GOPATH}/bin/protoc-gen* ${OUTDIR}/usr/bin/
 
