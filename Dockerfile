@@ -69,7 +69,8 @@ RUN go get -u -v -ldflags '-w -s' \
         github.com/lyft/protoc-gen-validate \
         moul.io/protoc-gen-gotemplate \
         github.com/micro/protoc-gen-micro \
-        && (cd ${GOPATH}/src/github.com/lyft/protoc-gen-validate && make build) \
+        && cd ${GOPATH}/src/github.com/lyft/protoc-gen-validate \
+        && make build \
         && install -c ${GOPATH}/bin/protoc-gen* ${OUTDIR}/usr/bin/
 
 RUN mkdir -p ${GOPATH}/src/github.com/pseudomuto/protoc-gen-doc && \
