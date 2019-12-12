@@ -51,24 +51,23 @@ RUN find ${OUTDIR} -name "*.a" -delete -or -name "*.la" -delete
 RUN apk add --no-cache go
 ENV GOPATH=/go \
         PATH=/go/bin/:$PATH
-RUN go get -u -v -ldflags '-w -s' \
-        github.com/Masterminds/glide \
-        github.com/golang/protobuf/protoc-gen-go \
-        github.com/gogo/protobuf/protoc-gen-gofast \
-        github.com/gogo/protobuf/protoc-gen-gogo \
-        github.com/gogo/protobuf/protoc-gen-gogofast \
-        github.com/gogo/protobuf/protoc-gen-gogofaster \
-        github.com/gogo/protobuf/protoc-gen-gogoslick \
-        github.com/twitchtv/twirp/protoc-gen-twirp \
-        github.com/chrusty/protoc-gen-jsonschema \
-        github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
-        github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
-        github.com/johanbrandhorst/protobuf/protoc-gen-gopherjs \
-        github.com/ckaznocha/protoc-gen-lint \
-        github.com/mwitkow/go-proto-validators/protoc-gen-govalidators \
-        github.com/lyft/protoc-gen-validate \
-        moul.io/protoc-gen-gotemplate \
-        && go get github.com/micro/protoc-gen-micro
+RUN go get -u -v -ldflags '-w -s' github.com/Masterminds/glide \
+        && go get -u -v -ldflags '-w -s' github.com/golang/protobuf/protoc-gen-go \
+        && go get -u -v -ldflags '-w -s' github.com/gogo/protobuf/protoc-gen-gofast \
+        && go get -u -v -ldflags '-w -s' github.com/gogo/protobuf/protoc-gen-gogo \
+        && go get -u -v -ldflags '-w -s' github.com/gogo/protobuf/protoc-gen-gogofast \
+        && go get -u -v -ldflags '-w -s' github.com/gogo/protobuf/protoc-gen-gogofaster \
+        && go get -u -v -ldflags '-w -s' github.com/gogo/protobuf/protoc-gen-gogoslick \
+        && go get -u -v -ldflags '-w -s' github.com/twitchtv/twirp/protoc-gen-twirp \
+        && go get -u -v -ldflags '-w -s' github.com/chrusty/protoc-gen-jsonschema \
+        && go get -u -v -ldflags '-w -s' github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
+        && go get -u -v -ldflags '-w -s' github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
+        && go get -u -v -ldflags '-w -s' github.com/johanbrandhorst/protobuf/protoc-gen-gopherjs \
+        && go get -u -v -ldflags '-w -s' github.com/ckaznocha/protoc-gen-lint \
+        && go get -u -v -ldflags '-w -s' github.com/mwitkow/go-proto-validators/protoc-gen-govalidators \
+        && go get -u -v -ldflags '-w -s' github.com/lyft/protoc-gen-validate \
+        && go get -u -v -ldflags '-w -s' moul.io/protoc-gen-gotemplate \
+        && go get -u -v -ldflags '-w -s' github.com/micro/protoc-gen-micro
 RUN cd ${GOPATH}/src/github.com/lyft/protoc-gen-validate \
         && make build \
         && install -c ${GOPATH}/bin/protoc-gen* ${OUTDIR}/usr/bin/
